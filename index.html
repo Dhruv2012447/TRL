@@ -4,7 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Real Leads | Automobile Growth Partner</title>
-
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/images/TRL-LOGO for black.svg">
+  
+  <!-- Optional: for older browsers using .ico -->
+  <link rel="shortcut icon" href="/images/TRL-LOGO for black.svg" type="image/x-icon">
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="Components/Navbar/Navbar.css" />
@@ -12,7 +17,7 @@
 </head>
 
 <body>
-    
+   <div id="app">
   <!-- Navbar Start -->
   <div id="navbar-container"></div>
   <!-- Navbar End -->
@@ -59,7 +64,7 @@
 
       <h2>
         Running Ads But Still Not Getting 
-        <span class="highlight">Sales?</span>
+        <span class="highlight ">Sales?</span>
       </h2>
 
       <p class="pain-subtext">
@@ -191,10 +196,10 @@
     <div class="results-content">
 
       <div class="results-badge">🚀 Proven Outcomes</div>
-
+      
       <h2>
-        What You Can <span class="highlight">Expect</span>
-      </h2>
+  What You Can <span class="highlight">Expect</span>
+</h2>
 
       <p class="results-subtext">
         Dealerships working with structured systems typically see:
@@ -261,7 +266,7 @@
 
     <!-- CONTENT -->
     <div class="why-trl-content">
-      <h2 class="animated-heading">Why <span class="highlight">TRL</span> is Different</h2>
+      <h2>Why <span class="highlight">TRL</span> is Different</h2>
       <p class="why-trl-intro">
         Most marketing companies work with every type of business.
         <br />
@@ -288,7 +293,7 @@
   <div class="who-wrapper">
     <!-- CONTENT -->
     <div class="who-content">
-      <h2 class="animated-heading">Who <span class="highlight">This</span> Is For</h2>
+      <h2>Who <span class="highlight">This</span> Is For</h2>
 
       <div class="who-lists">
         <!-- Ideal For -->
@@ -333,7 +338,7 @@
 
     <!-- CONTENT & FORM -->
     <div class="audit-content">
-      <h2 class="animated-heading">Get a Free 15-Minute <span class="highlight">Dealership</span> Growth Audit</h2>
+      <h2>Get a Free 15-Minute <span class="highlight">Dealership</span> Growth Audit</h2>
       
       <ul class="audit-points">
         <li>✔ Review your current ads</li>
@@ -365,7 +370,7 @@
     
     <!-- TEXT CONTENT -->
     <div class="trust-content">
-      <h2 class="animated-heading">Automobile <span class="highlight">Marketing</span> is Different</h2>
+      <h2 >Automobile <span class="highlight">Marketing</span> is Different</h2>
       <p class="trust-text">
         Generic marketing doesn’t work here.<br>
         If you want <span class="highlight-red">structured growth</span>, <span class="highlight-red">measurable ROI</span>, and <span class="highlight-red">serious buyers</span> — let’s talk.
@@ -382,65 +387,126 @@
   <footer class="trl-footer"></footer>
 </div>
 
+</div> 
 
 
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
 
+// Toggle menu
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+  menuToggle.classList.toggle("active");
+});
 
-  <script>
-    fetch('Components/Footer/Footer.html')
-    .then(response => response.text())
-    .then(data => {
-      document.querySelector('.trl-footer').outerHTML = data;
-    });
-    function loadComponent(id, file) {
-      console.log("Loading:", file);
+/* ================= SPA NAVIGATION ================= */
+const links = document.querySelectorAll(".nav-links a");
+const app = document.getElementById("app");
 
-      fetch(file)
-        .then(res => {
-          if (!res.ok) {
-            throw new Error("File not found: " + file);
-          }
-          return res.text();
-        })
+links.forEach(link => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault(); // 🚫 stop page reload
+
+    const url = link.getAttribute("href");
+
+    // Smooth fade out
+    app.style.opacity = "0";
+    app.style.transition = "opacity 0.3s ease";
+
+    setTimeout(() => {
+      fetch(url)
+        .then(res => res.text())
         .then(data => {
-          document.getElementById(id).innerHTML = data;
+          // Extract only body content
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(data, "text/html");
+          const newContent = doc.querySelector("#app").innerHTML;
 
-          // Get elements AFTER loading navbar
-          const menuToggle = document.getElementById("menuToggle");
-          const navLinks = document.getElementById("navLinks");
+          app.innerHTML = newContent;
 
-          // Toggle menu
-          if (menuToggle && navLinks) {
-            menuToggle.addEventListener("click", () => {
-              navLinks.classList.toggle("open");
-              menuToggle.classList.toggle("active");
-            });
+          // Fade in
+          app.style.opacity = "1";
+
+          // Update URL (no reload)
+          window.history.pushState({}, "", url);
+
+          // Update active link
+          links.forEach(l => l.classList.remove("active"));
+          link.classList.add("active");
+
+          // Close mobile menu
+          navLinks.classList.remove("open");
+          menuToggle.classList.remove("active");
+        });
+    }, 300);
+  });
+});
+
+/* ================= BACK BUTTON SUPPORT ================= */
+window.addEventListener("popstate", () => {
+  location.reload(); // simple fallback
+});
+</script>
+<script>
+/* ================= FOOTER LOAD ================= */
+fetch('Components/Footer/Footer.html')
+  .then(response => response.text())
+  .then(data => {
+    document.querySelector('.trl-footer').outerHTML = data;
+  });
+
+/* ================= COMPONENT LOADER ================= */
+function loadComponent(id, file) {
+  fetch(file)
+    .then(res => {
+      if (!res.ok) throw new Error("File not found: " + file);
+      return res.text();
+    })
+    .then(data => {
+      document.getElementById(id).innerHTML = data;
+
+      /* ================= NAVBAR LOGIC ================= */
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+
+      // Toggle menu
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("open");
+          menuToggle.classList.toggle("active");
+        });
+      }
+
+      /* ================= ACTIVE LINK (AUTO) ================= */
+      const links = document.querySelectorAll(".nav-links a");
+      const currentPath = window.location.pathname;
+
+      links.forEach(link => {
+        const linkPath = new URL(link.href).pathname;
+
+        // 🔥 Auto highlight current page
+        if (linkPath === currentPath) {
+          link.classList.add("active");
+        }
+
+        // Close mobile menu on click
+        link.addEventListener("click", () => {
+          if (navLinks && menuToggle) {
+            navLinks.classList.remove("open");
+            menuToggle.classList.remove("active");
           }
+        });
+      });
+    })
+    .catch(err => console.error("Error loading component:", err));
+}
 
-          // Active link highlight
-          const links = document.querySelectorAll(".nav-links a");
-
-          links.forEach(link => {
-            link.addEventListener("click", () => {
-              links.forEach(l => l.classList.remove("active"));
-              link.classList.add("active");
-
-              // Close mobile menu after click
-              if (navLinks && menuToggle) {
-                navLinks.classList.remove("open");
-                menuToggle.classList.remove("active");
-              }
-            });
-          });
-        })
-        .catch(err => console.error("Error loading component:", err));
-    }
-
-    // Run AFTER page loads
-    document.addEventListener("DOMContentLoaded", () => {
-      loadComponent("navbar-container", "Components/Navbar/Navbar.html");
-    });
-  </script>
+/* ================= INIT ================= */
+document.addEventListener("DOMContentLoaded", () => {
+  loadComponent("navbar-container", "Components/Navbar/Navbar.html");
+});
+</script>
 
 </body>
 </html>

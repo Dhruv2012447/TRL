@@ -25,7 +25,9 @@
   --radius: 8px;
   --transition: 0.3s ease;
 }
-
+#app {
+  transition: opacity 0.3s ease;
+}
 /* =========================
    RESET
 ========================= */
@@ -956,7 +958,7 @@ body {
 @media (max-width: 768px) {
   .results-section {
     min-height: auto;
-    padding: 40px 20px;
+    padding: 40px 5px;
   }
 
   .results-wrapper {
@@ -982,7 +984,6 @@ body {
     font-size: 26px;
   }
 }
-
 
 
 /* =========================
@@ -1093,28 +1094,33 @@ body {
     transition: all 0.3s ease;
     text-shadow: 0 0 8px rgba(255, 26, 26, 0.3);
 }
-
-.animated-heading {
+h2 {
+    position: relative;
     display: inline-block;
     cursor: default;
 }
 
-.animated-heading::after {
+h2 .highlight {
+    position: relative;
+    display: inline-block;
+}
+
+h2 .highlight::after {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -8px;
+    bottom: -4px;
     width: 0;
-    height: 4px;
-    background: #ff1a1a;
+    height: 5px;
+    background: #d60000;
     border-radius: 2px;
     transition: width 0.4s ease;
 }
 
-.animated-heading:hover::after {
+/* 🔥 Hover on full heading, animate only highlight */
+h2:hover .highlight::after {
     width: 100%;
 }
-
 .highlight-red {
     color: #ff1a1a;
 }
@@ -1286,7 +1292,7 @@ body {
 }
 @media screen and (max-width: 768px) {
     .who-wrapper {
-        margin: 0 auto;
+        margin: 0 0;
         gap: 20px;
     }
 }
@@ -1362,21 +1368,6 @@ body {
     line-height: 1.2;
 }
 
-.animated-heading::after {
-    content: '';
-    position: absolute;
-    bottom: -12px;
-    left: 0;
-    width: 0;
-    height: 4px;
-    background: #ff1a1a;
-    border-radius: 2px;
-    transition: width 0.4s ease;
-}
-
-.animated-heading:hover::after {
-    width: 100%;
-}
 
 /* Lists without boxes */
 .who-lists {
@@ -1450,7 +1441,7 @@ body {
     /* Text takes full screen width */
     .who-content {
         width: 100%;
-        padding: 0 10px; /* minimal side padding */
+        padding: 0 5px; /* minimal side padding */
     }
 
     /* Hide image on very small screens */
@@ -1585,21 +1576,6 @@ body {
   max-width: 100%; /* full width */
 }
 
-.animated-heading::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background: #ff1a1a;
-  border-radius: 2px;
-  transition: width 0.4s ease;
-}
-
-.animated-heading:hover::after {
-  width: 100%;
-}
 
 /* Points List */
 .audit-points {
@@ -1771,19 +1747,6 @@ body {
   text-align: center;
 }
 
-/* Animated underline */
-.trust-content h2::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -10px;
-  transform: translateX(-50%);
-  width: 0;
-  height: 5px;
-  background: #ff1a1a;
-  border-radius: 3px;
-  transition: width 0.5s ease;
-}
 
 .trust-content h2:hover::after {
   width: 100px;

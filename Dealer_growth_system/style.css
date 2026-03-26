@@ -1,0 +1,972 @@
+
+/* =========================
+   Full-Screen TRL Automobile Retail Section
+========================= */
+.trl-auto-retail-full {
+  background: linear-gradient(135deg, #000000 0%, #111111 100%);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  
+  /* Changed height to min-height: allows section to grow on mobile if content overflows */
+  min-height: 100vh; 
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Keep hidden for desktop, handled by container on mobile */
+  position: relative;
+  padding: 100px 20px 60px 20px; /* Added bottom padding */
+  box-sizing: border-box;
+}
+
+.trl-container-full {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px; /* Increased max width for better wide-screen usage */
+  width: 100%;
+  gap: 60px;
+  flex-wrap: wrap-reverse;
+  position: relative;
+  z-index: 1;
+  /* Removed fixed height: auto handles content flow better */
+}
+
+.trl-text-full {
+  flex: 1;
+  min-width: 300px;
+}
+
+.trl-text-full h2 {
+  /* Fluid typography: Scales between 32px and 48px */
+  font-size: clamp(32px, 4vw, 48px);
+  margin-bottom: 25px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  position: relative;
+}
+
+.trl-text-full li, .trl-text-full p {
+  font-size: clamp(16px, 2vw, 18px); /* Fluid font size */
+  line-height: 1.8;
+  margin-bottom: 18px;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.trl-text-full ul {
+  list-style-type: disc;
+  padding-left: 24px;
+  margin-bottom: 25px;
+}
+
+.trl-text-full ul li {
+  margin-bottom: 12px;
+}
+
+.trl-highlight-red {
+  color: #ff0000;
+  font-weight: 600;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.trl-highlight-red:hover {
+  color: #ff4d4d;
+  transform: scale(1.05);
+}
+
+.trl-btn-full {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 14px 32px;
+  background: linear-gradient(45deg, #ff2d2d, #ff5757);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(255, 45, 45, 0.3);
+}
+
+.trl-btn-full:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 30px rgba(255, 45, 45, 0.5);
+}
+
+.trl-image-full {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trl-image-full img {
+  width: 100%;
+  max-width: 550px;
+  height: auto; /* Ensures aspect ratio is kept */
+  border-radius: 20px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  object-fit: cover;
+}
+
+.trl-image-full img:hover {
+  transform: scale(1.07) rotate(1deg);
+  box-shadow: 0 25px 50px rgba(255, 45, 45, 0.5);
+  filter: brightness(1.05);
+}
+
+/* =========================
+   Responsive Design
+========================= */
+
+/* 1. Tablet & Small Laptops */
+@media (max-width: 992px) {
+  .trl-auto-retail-full {
+    /* Switch to natural flow layout */
+    min-height: auto; 
+    padding: 120px 30px 60px 30px; /* Increase side padding */
+    overflow: visible; /* Allow content to show */
+  }
+
+  .trl-container-full {
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    gap: 40px;
+  }
+
+  .trl-text-full {
+    min-width: 100%; /* Take full width */
+  }
+
+  /* Fix for centered lists: Keeps bullets tidy */
+  .trl-text-full ul {
+    display: inline-block;
+    text-align: left;
+    padding-left: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Or use this alternative if you prefer bullets centered:
+  .trl-text-full ul {
+     list-style-position: inside;
+     padding-left: 0;
+  }
+  */
+
+  .trl-image-full {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .trl-image-full img {
+    max-width: 100%; /* Image takes full container width on tablet */
+  }
+}
+
+/* 2. Mobile Devices */
+@media (max-width: 768px) {
+  .trl-auto-retail-full {
+    padding: 100px 15px 50px 15px; /* Reduce padding for mobile */
+  }
+
+  .trl-container-full {
+    gap: 30px;
+    margin-left: 8%;
+  }
+  .trl-image-full img {
+    display: none;
+  }
+
+  .trl-text-full h2 {
+    font-size: 1.8rem; /* Force smaller readable size */
+    margin-bottom: 15px;
+  }
+
+  .trl-text-full li, .trl-text-full p {
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .trl-btn-full {
+    padding: 12px 24px; /* Slightly smaller button */
+    font-size: 0.9rem;
+    width: 100%; /* Optional: Full width button */
+    text-align: center;
+  }
+}
+
+/* 3. Very Small Screens (e.g., iPhone SE) */
+@media (max-width: 480px) {
+  .trl-text-full ul {
+    width: 100%;
+    padding-left: 15px;
+  }
+  
+  .trl-text-full li {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    color: #111111;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 60px 20px;
+    position: relative;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.header h1 {
+    font-family: 'Playfair Display', serif;
+    /* Fluid typography: Scales from 2.5rem to 3.8rem based on screen width */
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    margin: 0;
+    line-height: 1.2;
+    color: #000;
+}
+
+.header h1 span {
+    color: #FF4D4D; /* Light Red */
+    font-style: italic;
+}
+
+.header p {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    color: #666;
+    max-width: 600px;
+    margin: 20px auto 0;
+    line-height: 1.6;
+    padding: 0 10px;
+}
+
+/* Flow Architecture Grid */
+.architecture-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px 80px; /* Vertical gap, Horizontal gap */
+    padding: 40px 0;
+}
+
+/* SVG Line Container */
+.svg-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.svg-lines path {
+    fill: none;
+    stroke: #FF4D4D;
+    stroke-width: 2;
+    stroke-dasharray: 10; /* Dotted look */
+    stroke-linecap: round;
+    /* Animation setup */
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 3s ease-in-out forwards;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Flow Items */
+.flow-item {
+    position: relative;
+    z-index: 1;
+    visibility: hidden; /* Hidden by default for layout logic, content shown via card */
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    visibility: visible;
+    box-sizing: border-box;
+}
+
+.card:hover {
+    transform: translateY(-50%) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+    border-color: #FF4D4D;
+}
+
+/* Alignment Logic */
+/* Item 1: Left */
+.flow-item:nth-child(1) { grid-column: 1; grid-row: 1; }
+/* Item 2: Right */
+.flow-item:nth-child(2) { grid-column: 2; grid-row: 2; }
+/* Item 3: Left */
+.flow-item:nth-child(3) { grid-column: 1; grid-row: 3; }
+/* Item 4: Right */
+.flow-item:nth-child(4) { grid-column: 2; grid-row: 4; }
+
+/* Connection Points (Dots) */
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border: 2px solid #FF4D4D;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
+    box-shadow: 0 0 0 4px rgba(255, 77, 77, 0.1);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Dot positioning for Left Cards (Default Desktop) */
+.flow-item:nth-child(odd) .dot {
+    right: -46px; /* Half of 80px gap + adjustment */
+}
+
+/* Dot positioning for Right Cards (Default Desktop) */
+.flow-item:nth-child(even) .dot {
+    left: -46px;
+}
+
+/* Card Content Styling */
+.step-badge {
+    display: inline-block;
+    background: #FF4D4D;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.25rem, 3vw, 1.5rem); /* Fluid sizing */
+    margin: 0 0 10px 0;
+    color: #000;
+}
+
+.card h3 {
+    font-size: 0.85rem;
+    color: #999;
+    margin: 0 0 20px 0;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.4;
+}
+
+.card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #FF4D4D;
+    opacity: 0.6;
+}
+
+/* RESPONSIVE DESIGN */
+
+/* 1. Tablet & Small Laptops (Intermediate Step) */
+@media (max-width: 992px) {
+    .container {
+        padding: 40px 30px;
+    }
+
+    .header {
+        margin-bottom: 40px;
+    }
+
+    /* Reduce the large gap to fit content better */
+    .architecture-grid {
+        gap: 50px 40px; 
+    }
+
+    /* Adjust SVG lines to fit new gap if necessary, 
+       though hiding them early often looks cleaner on tablets */
+    .svg-lines {
+        /* Optional: Hide SVG on tablet if it looks misaligned */
+         display: none; 
+    }
+      .flow-item:not(:last-child)::after{
+        display: none;
+      }
+
+    /* Recalculate Dot Position for 40px Gap */
+    /* Gap is 40px. Center is 20px from edge. Dot is 12px (radius 6). 
+       20 + 6 = 26px to push the center of the dot to the center of the gap */
+    .flow-item:nth-child(odd) .dot {
+        right: -26px;
+    }
+
+    .flow-item:nth-child(even) .dot {
+        left: -26px;
+    }
+
+    .card {
+        padding: 25px;
+    }
+}
+
+/* 2. Mobile Devices (Single Column) */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 15px;
+    }
+
+    .header {
+        margin-bottom: 30px;
+    }
+
+    /* Switch to single column block layout */
+    .architecture-grid {
+        display: block;
+        padding: 0;
+    }
+    
+    .flow-item {
+        margin-bottom: 50px; /* Space between cards */
+        visibility: visible;
+        /* Reset grid specific positioning */
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    /* Reset Card Transforms for Mobile */
+    .card {
+        transform: none;
+        top: 0;
+        padding: 20px;
+    }
+
+    .card:hover {
+        transform: scale(1.01); /* Subtle hover on mobile */
+    }
+
+    /* Hide Desktop SVG & Dots */
+    .svg-lines {
+        display: none;
+    }
+    
+    .dot {
+        display: none;
+    }
+
+    /* Mobile Vertical Connection Lines */
+    /* Adds a line from the bottom of a card to the top of the next */
+    .flow-item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -25px; /* Half of margin-bottom */
+        height: 25px; /* Half of margin-bottom */
+        width: 2px;
+        background-image: linear-gradient(to bottom, #FF4D4D 50%, transparent 50%);
+        background-size: 2px 10px;
+        background-repeat: repeat-y;
+        transform: translateX(-50%);
+        z-index: 0;
+    }
+}
+
+/* 3. Very Small Screens (Fine Tuning) */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 2rem; /* Force smaller title */
+    }
+    
+    .step-badge {
+        font-size: 0.65rem;
+        padding: 3px 8px;
+    }
+
+    .card ul li {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   TRL Integrated System Section - Simple Version
+========================= */
+.trl-integrated-system {
+  background-color: #000;
+  color: #fff;
+  padding: 150px 20px;
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+}
+
+.trl-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Image */
+.trl-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trl-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(255, 0, 0, 0.5);
+}
+
+/* Right content */
+.trl-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.trl-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.trl-points {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.trl-points li {
+  position: relative;
+  font-size: 20px;
+  margin-bottom: 15px;
+  padding-left: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.trl-points li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #ff0000;
+  font-size: 24px;
+  top: -2px;
+}
+
+.trl-points li:hover {
+  color: #ff0000;
+}
+
+.trl-subtitle {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.trl-highlight {
+  color: #ff0000;
+  font-weight: 700;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 992px) {
+  .trl-container {
+    flex-direction: column;
+    text-align: left;
+    gap: 30px;
+    padding:  0;
+  }
+  .trl-integrated-system{
+    padding-top:40px;
+    height: 100%;
+  }
+
+  .trl-image img {
+    display: none;
+  }
+
+  .trl-points li {
+    padding-left: 2;
+  }
+
+  .trl-points li::before {
+    left: -5;
+    margin: 0;
+    padding: 0;
+    transform: translateX(-50%);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   TRL Built For Section - Full Screen
+   Unique Classes Version
+========================= */
+.trl-builtfor-section {
+  background-color: #fff;
+  color: #000;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 40px 10%;
+  box-sizing: border-box;
+}
+
+.trl-builtfor-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  width: 100%;
+  gap: 60px;
+}
+
+/* LEFT CONTENT */
+.trl-builtfor-content {
+  flex: 1;
+  min-width: 350px;
+  text-align: left; /* Ensures left alignment */
+}
+
+.trl-builtfor-title {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 800;
+  margin-bottom: 40px;
+  line-height: 1.2;
+}
+
+.trl-builtfor-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 35px;
+}
+
+.trl-builtfor-list li {
+  font-size: clamp(18px, 2.5vw, 22px);
+  margin-bottom: 15px;
+  padding-left: 0; /* Removed padding to keep it strictly left-aligned */
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.trl-builtfor-list li:hover {
+  color: #ff0000;
+  transform: translateX(6px);
+}
+
+.trl-builtfor-subtitle {
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.trl-builtfor-highlight {
+  color: #ff0000;
+  font-weight: 700;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* RIGHT IMAGE */
+.trl-builtfor-image {
+  flex: 1;
+  min-width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trl-builtfor-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(255,0,0,0.2);
+}
+
+/* =========================
+   Responsive Adjustments
+========================= */
+
+/* Tablet & Mobile Breakpoint */
+@media (max-width: 992px) {
+  .trl-builtfor-section {
+    min-height: auto; /* Allow section to shrink if no image */
+    padding: 60px 30px;
+  }
+
+  .trl-builtfor-container {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* HIDE THE IMAGE CONTAINER COMPLETELY */
+  .trl-builtfor-image {
+    display: none;
+  }
+
+  /* ENSURE LEFT ALIGNMENT */
+  .trl-builtfor-content {
+    min-width: 100%;
+    text-align: left;
+  }
+
+  .trl-builtfor-title {
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .trl-builtfor-section {
+    padding: 40px 20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   TRL Closing Section - Simple & Attractive
+========================= */
+.trl-closing-section {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  height: 100vh;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.trl-closing-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+/* Left Content */
+.trl-closing-content {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+}
+
+.trl-closing-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  margin-bottom: 25px;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.trl-closing-text {
+  font-size: clamp(18px, 2.5vw, 20px);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.trl-closing-highlight {
+  color: #ff3333; /* subtle red highlight */
+  font-weight: 600;
+  transition: transform 0.3s ease;
+}
+
+.trl-closing-highlight:hover {
+  transform: scale(1.03);
+}
+
+/* Button */
+.trl-closing-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: #fff;
+  color: #000;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.trl-closing-btn:hover {
+  background-color: #ff3333;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Right Image */
+.trl-closing-image {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trl-closing-image img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trl-closing-image img:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(255, 51, 51, 0.3);
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 992px) {
+  .trl-closing-container {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .trl-closing-image img {
+    max-width: 70%;
+  }
+}
+
+@media (max-width: 480px) {
+  .trl-closing-section {
+    padding: auto 20px;
+    padding-top: 20px;
+      height: 100vh;
+  }
+  .trl-closing-image img{
+      display: none;
+  }
+
+  .trl-closing-title {
+    font-size: clamp(22px, 5vw, 32px);
+  }
+
+  .trl-closing-text {
+    font-size: clamp(16px, 4vw, 18px);
+  }
+
+  .trl-closing-btn {
+    padding: 10px 22px;
+    margin-top: 20px;
+  }
+}
